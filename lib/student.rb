@@ -35,8 +35,16 @@ class Student
     sql = <<-SQL
       SELECT *
       FROM students
-      WHERE grade = 9
-      LIMIT 1;
+      WHERE grade = 9;
+    SQL
+    DB[:conn].execute(sql)
+  end
+  
+  def self.students_below_12th_grade
+    sql = <<-SQL
+      SELECT *
+      FROM students
+      WHERE grade < 12;
     SQL
     DB[:conn].execute(sql)
   end
